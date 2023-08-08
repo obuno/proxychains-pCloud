@@ -10,7 +10,7 @@ I've cobbled this because in my setups/personal environments, the only possible 
 pCloud Linux Client:----------------------------------
 ------------------------------------------------------
 
-You shal have pCloud Linux Client installed already, here is what I've done on my local distribution:
+You shall have pCloud Linux Client installed already, here is what I've done on my local distribution:
 https://www.pcloud.com/release-notes/linux.html
 
 http_proxy=$http_proxy https_proxy=$http_proxy pamac install pcloud-drive
