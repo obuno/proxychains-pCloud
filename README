@@ -23,9 +23,10 @@ Installing ProxyChains NG:----------------------------
 
 ProxyChains NG GitHub repo is available here: https://github.com/rofl0r/proxychains-ng
 
-git clone https://github.com/rofl0r/proxychains-ng
-
 *** Installation *** (needs a working C compiler, preferably gcc)
+
+git clone https://github.com/rofl0r/proxychains-ng
+cd proxychains-ng
 
 ./configure --prefix=/usr --sysconfdir=/etc
 make
