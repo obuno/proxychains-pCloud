@@ -9,8 +9,9 @@
 http_proxy=$http_proxy https_proxy=$http_proxy pamac install pcloud-drive
 
 -----------------------------------------------------------------------------------------------------------------------
------------Get ProxyChains NG from here: https://github.com/rofl0r/proxychains-ng
+-----------Installing ProxyChains NG
 -----------------------------------------------------------------------------------------------------------------------
+---------------------------------ProxyChains NG GitHub repo is available here: https://github.com/rofl0r/proxychains-ng
 
 git clone https://github.com/rofl0r/proxychains-ng
 
@@ -22,7 +23,7 @@ sudo make install
 sudo make install-config (installs proxychains.conf)
 
 -----------------------------------------------------------------------------------------------------------------------
------------Creating the needed systemd services:
+-----------Creating your systemd services:
 -----------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------ProxyChains DNS daemon service:
 
@@ -97,6 +98,7 @@ sudo mkdir -p /var/log/proxychains/
 Default proxychains.conf file settings:
 ------------------------------------------------------
 grep "^[^#;]" /tmp/proxychains-ng/src/proxychains.conf
+------------------------------------------------------
 strict_chain
 proxy_dns
 remote_dns_subnet 224
