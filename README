@@ -3,7 +3,7 @@
 #######################################################################################################################
 
 -----------------------------------------------------------------------------------------------------------------------
------------pCloud Linux Client should be installed already, here is waht I've done on my local distribution
+-----------pCloud Linux Client should be installed already, here is what I've done on my local distribution
 -----------------------------------------------------------------------------------------------------------------------
 
 http_proxy=$http_proxy https_proxy=$http_proxy pamac install pcloud-drive
