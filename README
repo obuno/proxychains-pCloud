@@ -1,14 +1,125 @@
 ; ####################################################
-; ###### pCloud with ProxyChains #####################
+; ###### pCloud through ProxyChains ##################
 ; ####################################################
 
+------------------------------------------------------------------------------------------------------------
+pCloud Linux Client should be installed already, here is waht I've done on my local distribution
+------------------------------------------------------------------------------------------------------------
+
+pamac install pcloud-drive
+
+------------------------------------------------------------------------------------------------------------
+Get ProxyChains NG from here: https://github.com/rofl0r/proxychains-ng
+------------------------------------------------------------------------------------------------------------
+
+git clone https://github.com/rofl0r/proxychains-ng
+
+*** Installation *** (needs a working C compiler, preferably gcc)
+
+./configure --prefix=/usr --sysconfdir=/etc
+make
+sudo make install
+sudo make install-config (installs proxychains.conf)
+
+------------------------------------------------------------------------------------------------------------
+Creating the needed systemd services:
+------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------ProxyChains DNS daemon service:
+
+sudo touch /etc/systemd/system/proxychains.dns.service
+
+sudo bash -c 'cat <<EOF > /etc/systemd/system/proxychains.dns.service
+[Unit]
+Description=ProxyChains DNS Daemon
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+User=%USERNAME%
+ExecStart=/usr/bin/proxychains4-daemon
+Restart=on-failure
+
+StandardError=append:/var/log/proxychains/proxychains.dns.service.log
+
+[Install]
+WantedBy=multi-user.target
+EOF'
+
+------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------ProxyChains pCloud service:
+
+sudo touch /usr/bin/proxychains-pcloud.sh
+
+sudo bash -c 'cat <<EOF > /usr/bin/proxychains-pcloud.sh
+#!/bin/bash
+
+sleep 10
+#########################
+# display settings may vary on your system, edit the line below accordingly
+#########################
+export DISPLAY=:1
+
+/usr/bin/proxychains4 /usr/bin/pcloud
+EOF'
+
+sudo chmod +x /usr/bin/proxychains-pcloud.sh
+sudo chown %USERNAME%:%USERNAME% /usr/bin/proxychains-pcloud.sh
+
+sudo bash -c 'cat <<EOF > /etc/systemd/system/proxychains.pcloud.service
+[Unit]
+Description=ProxyChains running pCloud
+Requires=network.target
+After=network.target
+
+[Service]  
+Type=simple
+User=%USERNAME%
+ExecStart=/usr/bin/proxychains-pcloud.sh
+Restart=on-failure  
+
+StandardError=append:/var/log/proxychains/proxychains.pcloud.service.log
+
+[Install]
+WantedBy=multi-user.target
+EOF'
+
+------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------ProxyChains log folder:
+
+sudo mkdir -p /var/log/proxychains/
+
+------------------------------------------------------------------------------------------------------------
+Edit your ProxyChains configuration file reflecting your environment (mainly your proxy server + DNS settings):
+------------------------------------------------------------------------------------------------------------
+  
+grep "^[^#;]" /etc/proxychains.conf
 ------------------------------------------------------
-Get ProxyChains NG here: https://github.com/rofl0r/proxychains-ng
+strict_chain
+proxy_dns_daemon 127.0.0.1:1053
+remote_dns_subnet 224
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+[ProxyList]
+http  10.11.12.13  8080
 
-*** Installation ***
+------------------------------------------------------------------------------------------------------------
+Start the created services:
+------------------------------------------------------------------------------------------------------------
 
-  # needs a working C compiler, preferably gcc
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make
-  [optional] sudo make install
-  [optional] sudo make install-config (installs proxychains.conf)
+$ sudo systemctl daemon-reload
+
+$ sudo systemctl enable proxychains.dns.service 
+Created symlink /etc/systemd/system/multi-user.target.wants/proxychains.dns.service → /etc/systemd/system/proxychains.dns.service.
+
+$ sudo systemctl enable proxychains.pcloud.service 
+Created symlink /etc/systemd/system/multi-user.target.wants/proxychains.pcloud.service → /etc/systemd/system/proxychains.pcloud.service.
+
+$ sudo systemctl start proxychains.dns.service 
+$ sudo systemctl start proxychains.pcloud.service 
+
+$ sudo systemctl status proxychains.dns.service 
+$ sudo systemctl status proxychains.pcloud.service 
+
+$ tail -f /var/log/proxychains/proxychains.dns.service.log
+$ tail -f /var/log/proxychains/proxychains.pcloud.service.log
