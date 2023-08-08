@@ -6,7 +6,7 @@
 pCloud Linux Client should be installed already, here is waht I've done on my local distribution
 ------------------------------------------------------------------------------------------------------------
 
-pamac install pcloud-drive
+http_proxy=$http_proxy https_proxy=$http_proxy pamac install pcloud-drive
 
 ------------------------------------------------------------------------------------------------------------
 Get ProxyChains NG from here: https://github.com/rofl0r/proxychains-ng
