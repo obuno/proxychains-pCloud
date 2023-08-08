@@ -141,7 +141,7 @@ sudo systemctl start proxychains.dns.service
 sudo systemctl start proxychains.pcloud.service
 
 ------------------------------------------------------
-Troubleshooting, Services Status & logs checkups: ----
+Troubleshooting, Services Status & logs checkups:-----
 ------------------------------------------------------
 
 sudo systemctl status proxychains.dns.service 
