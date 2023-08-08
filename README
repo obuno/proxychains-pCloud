@@ -1,0 +1,14 @@
+; ####################################################
+; ###### pCloud with ProxyChains #####################
+; ####################################################
+
+------------------------------------------------------
+Get ProxyChains NG here: https://github.com/rofl0r/proxychains-ng
+
+*** Installation ***
+
+  # needs a working C compiler, preferably gcc
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
+  [optional] sudo make install
+  [optional] sudo make install-config (installs proxychains.conf)
