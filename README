@@ -121,23 +121,20 @@ http  10.11.12.13  8080
 -----------Enabled & start the created services:
 -----------------------------------------------------------------------------------------------------------------------
 
-$ sudo systemctl daemon-reload
+sudo systemctl daemon-reload
 
-$ sudo systemctl enable proxychains.dns.service 
-Created symlink /etc/systemd/system/multi-user.target.wants/proxychains.dns.service → /etc/systemd/system/proxychains.dns.service.
+sudo systemctl enable proxychains.dns.service 
+sudo systemctl enable proxychains.pcloud.service 
 
-$ sudo systemctl enable proxychains.pcloud.service 
-Created symlink /etc/systemd/system/multi-user.target.wants/proxychains.pcloud.service → /etc/systemd/system/proxychains.pcloud.service.
-
-$ sudo systemctl start proxychains.dns.service
-$ sudo systemctl start proxychains.pcloud.service
+sudo systemctl start proxychains.dns.service
+sudo systemctl start proxychains.pcloud.service
 
 -----------------------------------------------------------------------------------------------------------------------
 -----------Troubleshooting & Services status + logs checkups:
 -----------------------------------------------------------------------------------------------------------------------
 
-$ sudo systemctl status proxychains.dns.service 
-$ sudo systemctl status proxychains.pcloud.service 
+sudo systemctl status proxychains.dns.service 
+sudo systemctl status proxychains.pcloud.service 
 
-$ tail -f /var/log/proxychains/proxychains.dns.service.log
-$ tail -f /var/log/proxychains/proxychains.pcloud.service.log
+tail -f /var/log/proxychains/proxychains.dns.service.log
+tail -f /var/log/proxychains/proxychains.pcloud.service.log
