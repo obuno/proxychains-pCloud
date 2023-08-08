@@ -4,7 +4,7 @@
 
 Notes:
 
-I've cobbled this because in my setups/personal environments, the only possible inernet connectivity is through proxy server(s) for both, HTTP(s) & external DNS traffic. Natively, pCloud Linux Client (nor any of their clients AFAIK) dosen't supports proxied setup (which is a shame if you ask me). Hope this help's !!
+I've cobbled this because in my setups/personal environments, the only possible inernet connectivity is through proxy server(s) for both, HTTP(s) & external DNS resolutions. Natively, pCloud Linux Client (nor any of their clients AFAIK) dosen't supports proxied setup (which is a shame if you ask me). Hope this help's !!
 
 ------------------------------------------------------
 pCloud Linux Client:----------------------------------
