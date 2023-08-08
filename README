@@ -46,6 +46,8 @@ StandardError=append:/var/log/proxychains/proxychains.dns.service.log
 WantedBy=multi-user.target
 EOF'
 
+NOTE: by default proxychains4-daemon listenip is 127.0.0.1, port 1053 and remotesubnet 224.
+
 ------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------ProxyChains pCloud service:
 
@@ -90,7 +92,7 @@ EOF'
 sudo mkdir -p /var/log/proxychains/
 
 ------------------------------------------------------------------------------------------------------------
-Edit your ProxyChains configuration file reflecting your environment (mainly your proxy server + DNS settings):
+Edit your ProxyChains configuration file reflecting your environment (set your proxy server + DNS settings):
 ------------------------------------------------------------------------------------------------------------
   
 grep "^[^#;]" /etc/proxychains.conf
