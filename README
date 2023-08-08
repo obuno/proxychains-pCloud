@@ -94,7 +94,19 @@ sudo mkdir -p /var/log/proxychains/
 ------------------------------------------------------------------------------------------------------------
 Edit your ProxyChains configuration file reflecting your environment (set your proxy server + DNS settings):
 ------------------------------------------------------------------------------------------------------------
-  
+Default proxychains.conf file settings:
+------------------------------------------------------
+grep "^[^#;]" /tmp/proxychains-ng/src/proxychains.conf
+strict_chain
+proxy_dns
+remote_dns_subnet 224
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+[ProxyList]
+socks4  127.0.0.1 9050
+
+Edited proxychains.conf file settings:
+------------------------------------------------------
 grep "^[^#;]" /etc/proxychains.conf
 ------------------------------------------------------
 strict_chain
@@ -106,7 +118,7 @@ tcp_connect_time_out 8000
 http  10.11.12.13  8080
 
 ------------------------------------------------------------------------------------------------------------
-Start the created services:
+Enabled & start the created services:
 ------------------------------------------------------------------------------------------------------------
 
 $ sudo systemctl daemon-reload
@@ -121,7 +133,7 @@ $ sudo systemctl start proxychains.dns.service
 $ sudo systemctl start proxychains.pcloud.service
 
 ------------------------------------------------------------------------------------------------------------
-Troubleshooting and service status + logs checkups:
+Troubleshooting & Services status + logs checkups:
 ------------------------------------------------------------------------------------------------------------
 
 $ sudo systemctl status proxychains.dns.service 
