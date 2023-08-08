@@ -1,23 +1,24 @@
-#######################################################################################################################
-######## pCloud through ProxyChains ###################################################################################
-#######################################################################################################################
+######################################################
+######## pCloud through ProxyChains ##################
+######################################################
 
 Notes:
 
-I've cobbled this because in my setups/personal environments, the only possible inernet connectivity is through proxy
-server(s) for both, HTTP(s) & external DNS traffic. Natively, pCloud Linux Client (nor any of their clients AFAIK) 
-dosen't supports proxied setup (which is a shame if you ask me). Hope this help's !!
+I've cobbled this because in my setups/personal environments, the only possible inernet connectivity is through proxy server(s) for both, HTTP(s) & external DNS traffic. Natively, pCloud Linux Client (nor any of their clients AFAIK) dosen't supports proxied setup (which is a shame if you ask me). Hope this help's !!
 
------------------------------------------------------------------------------------------------------------------------
------------pCloud Linux Client should be installed already, here is what I've done on my local distribution
------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------
+pCloud Linux Client:----------------------------------
+------------------------------------------------------
+
+should be installed already, here is what I've done on my local distribution:
 
 http_proxy=$http_proxy https_proxy=$http_proxy pamac install pcloud-drive
 
------------------------------------------------------------------------------------------------------------------------
------------Installing ProxyChains NG
------------------------------------------------------------------------------------------------------------------------
----------------------------------ProxyChains NG GitHub repo is available here: https://github.com/rofl0r/proxychains-ng
+------------------------------------------------------
+Installing ProxyChains NG:----------------------------
+------------------------------------------------------
+
+ProxyChains NG GitHub repo is available here: https://github.com/rofl0r/proxychains-ng
 
 git clone https://github.com/rofl0r/proxychains-ng
 
@@ -28,10 +29,10 @@ make
 sudo make install
 sudo make install-config (installs proxychains.conf)
 
------------------------------------------------------------------------------------------------------------------------
------------Creating your systemd services:
------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------ProxyChains DNS daemon service:
+------------------------------------------------------
+Creating your systemd services:-----------------------
+------------------------------------------------------
+-----------------------ProxyChains DNS daemon service:
 
 sudo touch /etc/systemd/system/proxychains.dns.service
 
@@ -55,8 +56,8 @@ EOF'
 
 NOTE: by default proxychains4-daemon listenip is 127.0.0.1, port 1053 and remotesubnet 224.
 
------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------ProxyChains pCloud service:
+------------------------------------------------------
+---------------------------ProxyChains pCloud service:
 
 sudo touch /usr/bin/proxychains-pcloud.sh
 
@@ -93,14 +94,15 @@ StandardError=append:/var/log/proxychains/proxychains.pcloud.service.log
 WantedBy=multi-user.target
 EOF'
 
------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------ProxyChains log folder:
+------------------------------------------------------
+-------------------------------ProxyChains log folder:
 
 sudo mkdir -p /var/log/proxychains/
 
------------------------------------------------------------------------------------------------------------------------
------------Edit your ProxyChains configuration file reflecting your environment (set your proxy server + DNS settings):
------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------
+Edit your ProxyChains configuration file:-------------
+------------------------------------------------------
+
 Default proxychains.conf file settings:
 ------------------------------------------------------
 grep "^[^#;]" /tmp/proxychains-ng/src/proxychains.conf
@@ -125,9 +127,9 @@ tcp_connect_time_out 8000
 [ProxyList]
 http  10.11.12.13  8080
 
------------------------------------------------------------------------------------------------------------------------
------------Enable & Start the created services:
------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------
+Enable & Start the created services:------------------
+------------------------------------------------------
 
 sudo systemctl daemon-reload
 
@@ -137,9 +139,9 @@ sudo systemctl enable proxychains.pcloud.service
 sudo systemctl start proxychains.dns.service
 sudo systemctl start proxychains.pcloud.service
 
------------------------------------------------------------------------------------------------------------------------
------------Troubleshooting, Services Status & logs checkups:
------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------
+Troubleshooting, Services Status & logs checkups: ----
+------------------------------------------------------
 
 sudo systemctl status proxychains.dns.service 
 sudo systemctl status proxychains.pcloud.service 
