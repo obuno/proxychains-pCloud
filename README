@@ -68,11 +68,19 @@ sudo touch /usr/bin/proxychains-pcloud.sh
 sudo bash -c 'cat <<EOF > /usr/bin/proxychains-pcloud.sh
 #!/bin/bash
 
+#########################
+# umounting older pcloud-drive-x.x.AppImage mount points
+#########################
+/usr/bin/umount /tmp/.mount_pcloud*
+#########################
+
 sleep 10
+
 #########################
 # display settings may vary on your system, edit the line below accordingly
 #########################
-export DISPLAY=:1
+export DISPLAY=:0
+#########################
 
 /usr/bin/proxychains4 /usr/bin/pcloud
 EOF'
