@@ -123,7 +123,8 @@ tcp_read_time_out 15000
 tcp_connect_time_out 8000
 [ProxyList]
 socks4  127.0.0.1 9050
-
+```
+```
 Edited proxychains.conf file settings:
 ------------------------------------------------------
 grep "^[^#;]" /etc/proxychains.conf
