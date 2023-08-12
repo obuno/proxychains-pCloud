@@ -4,9 +4,7 @@ NOTES:
 
 Aloha, I've cobbled this because in my setups/personal environments, the only possible inernet connectivity is through proxy server(s) for both, HTTP(s) & external DNS resolutions. Natively, the pCloud Linux Client (nor any of their clients AFAIK) dose NOT support proxied connectivity, which is a shame if you ask me. In the hope that this might help some of you !!
 
-------------------------------------------------------
-pCloud Linux Client:----------------------------------
-------------------------------------------------------
+pCloud Linux Client:
 
 https://www.pcloud.com/release-notes/linux.html
 You shall have pCloud Linux Client installed already, here is what I've done on my local distribution:
@@ -15,14 +13,13 @@ http_proxy=$http_proxy https_proxy=$http_proxy pamac install pcloud-drive
 ```
 hence, for me this package: https://aur.archlinux.org/packages/pcloud-drive
 
-------------------------------------------------------
-Installing ProxyChains NG:----------------------------
-------------------------------------------------------
+
+Installing ProxyChains NG:
 
 ProxyChains NG GitHub repo is available here: https://github.com/rofl0r/proxychains-ng
 
 *** Installation *** (needs a working C compiler, preferably gcc)
-
+```
 git clone https://github.com/rofl0r/proxychains-ng
 cd proxychains-ng
 
@@ -30,11 +27,10 @@ cd proxychains-ng
 make
 sudo make install
 sudo make install-config (installs proxychains.conf)
+```
 
-------------------------------------------------------
-Creating your systemd services:-----------------------
-------------------------------------------------------
------------------------ProxyChains DNS daemon service:
+Creating your systemd services:
+-ProxyChains DNS daemon service:
 
 sudo touch /etc/systemd/system/proxychains.dns.service
 
