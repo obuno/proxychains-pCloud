@@ -109,11 +109,9 @@ EOF'
 ```
 sudo mkdir -p /var/log/proxychains/
 ```
-```
-------------------------------------------------------
-Edit your ProxyChains configuration file:-------------
-------------------------------------------------------
 
+### Editing your ProxyChains configuration file:
+```
 Default proxychains.conf file settings:
 ------------------------------------------------------
 grep "^[^#;]" /tmp/proxychains-ng/src/proxychains.conf
