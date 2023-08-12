@@ -6,7 +6,7 @@ Aloha, I've cobbled this because in my setups/personal environments, the only po
 
 ## pCloud Linux Client:
 
-https://www.pcloud.com/release-notes/linux.html
+https://www.pcloud.com/release-notes/linux.html   
 You shall have pCloud Linux Client installed already, here is what I've done on my local distribution:
 ```
 http_proxy=$http_proxy https_proxy=$http_proxy pamac install pcloud-drive
