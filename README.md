@@ -34,7 +34,8 @@ sudo make install-config (installs proxychains.conf)
 ### ProxyChains DNS daemon service:
 ```
 sudo touch /etc/systemd/system/proxychains.dns.service
-
+```
+```
 sudo bash -c 'cat <<EOF > /etc/systemd/system/proxychains.dns.service
 [Unit]
 Description=ProxyChains DNS Daemon
