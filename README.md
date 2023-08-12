@@ -12,6 +12,7 @@ You shall have pCloud Linux Client installed already, here is what I've done on 
 http_proxy=$http_proxy https_proxy=$http_proxy pamac install pcloud-drive
 ```
 hence, for me this package: https://aur.archlinux.org/packages/pcloud-drive   
+
 Pay attention not to allow or remove pCloud from your autostarted applications
 
 ## Installing ProxyChains NG:
