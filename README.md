@@ -105,7 +105,7 @@ WantedBy=multi-user.target
 EOF'
 ```
 
-### ProxyChains logs folder:
+### Creating the ProxyChains logs folder:
 ```
 sudo mkdir -p /var/log/proxychains/
 ```
