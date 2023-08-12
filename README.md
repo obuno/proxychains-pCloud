@@ -2,7 +2,7 @@
 
 NOTES:
 
-Aloha, I've cobbled this because in my setups/personal environments, the only possible inernet connectivity is through proxy server(s) for both, HTTP(s) & external DNS resolutions. Natively, neither the pCloud Linux Client nor any of the pCloud proposed clients (AFAIK) seems to support proxied connectivity, which is somewhat of a shame. In the hope that this might help some of you !!
+Aloha, I've cobbled this because in my setups/personal environments, the only possible inernet connectivity is through proxy server(s) for both, HTTP(s) & external DNS resolutions. Natively, neither the pCloud Drive Client for Linux nor any of the pCloud proposed Drive clients (AFAIK) seems to support proxied connectivity, which is somewhat of a shame. In the hope that this might help some of you !!
 
 ## pCloud Linux Client:
 
