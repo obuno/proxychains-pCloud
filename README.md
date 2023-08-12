@@ -6,13 +6,14 @@ Aloha, I've cobbled this because in my setups/personal environments, the only po
 
 ## pCloud Linux Client:
 
-https://www.pcloud.com/release-notes/linux.html   
 You shall have pCloud Linux Client installed already, here is what I've done on my local distribution:
 ```
 http_proxy=$http_proxy https_proxy=$http_proxy pamac install pcloud-drive
 ```
 hence, for me this package: https://aur.archlinux.org/packages/pcloud-drive   
-Pay attention NOT to allow/remove pCloud from your autostarted applications
+The pCloud Drive Client for Linux release notes are here: https://www.pcloud.com/release-notes/linux.html
+
+Pay attention NOT to allow OR remove pCloud from your autostarted applications.
 
 ## Installing ProxyChains NG:
 
