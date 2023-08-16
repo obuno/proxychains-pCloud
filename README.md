@@ -56,10 +56,10 @@ NOTE: by default proxychains4-daemon listenip is 127.0.0.1, port 1053 and remote
 
 ### ProxyChains pCloud service:
 ```
-sudo touch /usr/bin/proxychains-pcloud.sh
+sudo touch /usr/local/bin/proxychains-pcloud.sh
 ```
 ```
-sudo bash -c 'cat <<EOF > /usr/bin/proxychains-pcloud.sh
+sudo bash -c 'cat <<EOF > /usr/local/bin/proxychains-pcloud.sh
 #!/bin/bash
 
 #########################
@@ -90,7 +90,7 @@ Description=ProxyChains running pCloud
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/proxychains-pcloud.sh
+ExecStart=/usr/local/bin/proxychains-pcloud.sh
 Restart=on-failure
 
 StandardError=append:/var/log/proxychains/proxychains.pcloud.service.log
