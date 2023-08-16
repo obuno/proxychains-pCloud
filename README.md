@@ -34,18 +34,16 @@ sudo make install-config (installs proxychains.conf)
 
 ### ProxyChains DNS daemon service:
 ```
-sudo touch /etc/systemd/system/proxychains.dns.service
+sudo touch /etc/systemd/system/user/proxychains.dns.service
 ```
 ```
-sudo bash -c 'cat <<EOF > /etc/systemd/system/proxychains.dns.service
+sudo bash -c 'cat <<EOF > /etc/systemd/system/user/proxychains.dns.service
 [Unit]
 Description=ProxyChains DNS Daemon
-Requires=network.target
 After=network.target
 
 [Service]
 Type=simple
-User=%USERNAME%
 ExecStart=/usr/bin/proxychains4-daemon
 Restart=on-failure
 
@@ -87,15 +85,13 @@ sudo chmod +x /usr/bin/proxychains-pcloud.sh
 sudo chown %USERNAME%:%USERNAME% /usr/bin/proxychains-pcloud.sh
 ```
 ```
-sudo bash -c 'cat <<EOF > /etc/systemd/system/proxychains.pcloud.service
+sudo bash -c 'cat <<EOF > /etc/systemd/system/user/proxychains.pcloud.service
 [Unit]
 Description=ProxyChains running pCloud
-Requires=network.target
 After=network.target
 
 [Service]  
 Type=simple
-User=%USERNAME%
 ExecStart=/usr/bin/proxychains-pcloud.sh
 Restart=on-failure  
 
@@ -109,6 +105,11 @@ EOF'
 ### Creating the ProxyChains logs folder:
 ```
 sudo mkdir -p /var/log/proxychains/
+```
+
+### Let user write to the ProxyChains logs folder:
+```
+sudo setfacl -R -m u:%USERNAME%:rwX /var/log/proxychains/
 ```
 
 ### Editing your ProxyChains configuration file:
@@ -141,19 +142,19 @@ http  10.11.12.13  8080
 
 ### Enable & Start the created services:
 ```
-sudo systemctl daemon-reload
+systemctl --user daemon-reload
 
-sudo systemctl enable proxychains.dns.service 
-sudo systemctl enable proxychains.pcloud.service 
+systemctl --user enable proxychains.dns.service
+systemctl --user enable proxychains.pcloud.service 
 
-sudo systemctl start proxychains.dns.service
-sudo systemctl start proxychains.pcloud.service
+systemctl --user start proxychains.dns.servic
+systemctl --user start proxychains.pcloud.service
 ```
 
 ### Troubleshooting, Services Status & logs checkups:
 ```
-sudo systemctl status proxychains.dns.service 
-sudo systemctl status proxychains.pcloud.service 
+systemctl --user status proxychains.dns.service
+systemctl --user status proxychains.pcloud.service
 
 tail -f /var/log/proxychains/proxychains.dns.service.log
 tail -f /var/log/proxychains/proxychains.pcloud.service.log
