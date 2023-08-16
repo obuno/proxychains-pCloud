@@ -5,8 +5,8 @@ NOTES:
 Aloha, I've cobbled this because in my setups/personal environments, the only possible internet connectivity is through proxy server(s) for both, HTTP(s) & external DNS resolutions. Natively, neither the pCloud Drive Client for Linux nor any of the pCloud proposed Drive Clients (AFAIK) seems to support proxied connectivity, which is somewhat of a shame. In the hope that this might help some of you !!
 
 To be edited on your system:
-- %USERNAME | replace this value with your or the elected user account that will run the pCloud binaries.
-- /usr/bin/pcloud | is where the pCloud binary was installed on my system, this might diverge on your system.
+- %USERNAME% | replace this value with your elected user account which will run the pCloud binaries.
+- /usr/bin/pcloud | this is where the pCloud binary was installed on my system, this might diverge on your system.
 
 ## Installing the pCloud Drive Linux Client:
 
