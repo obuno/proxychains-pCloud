@@ -40,7 +40,6 @@ sudo touch /etc/systemd/system/user/proxychains.dns.service
 sudo bash -c 'cat <<EOF > /etc/systemd/system/user/proxychains.dns.service
 [Unit]
 Description=ProxyChains DNS Daemon
-After=network.target
 
 [Service]
 Type=simple
@@ -50,7 +49,7 @@ Restart=on-failure
 StandardError=append:/var/log/proxychains/proxychains.dns.service.log
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 EOF'
 ```
 NOTE: by default proxychains4-daemon listenip is 127.0.0.1, port 1053 and remotesubnet 224.
@@ -88,17 +87,16 @@ sudo chown %USERNAME%:%USERNAME% /usr/bin/proxychains-pcloud.sh
 sudo bash -c 'cat <<EOF > /etc/systemd/system/user/proxychains.pcloud.service
 [Unit]
 Description=ProxyChains running pCloud
-After=network.target
 
-[Service]  
+[Service]
 Type=simple
 ExecStart=/usr/bin/proxychains-pcloud.sh
-Restart=on-failure  
+Restart=on-failure
 
 StandardError=append:/var/log/proxychains/proxychains.pcloud.service.log
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 EOF'
 ```
 
