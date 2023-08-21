@@ -84,7 +84,7 @@ export DISPLAY=:1
 EOF'
 ```
 ```
-sudo chmod +x /usr/bin/proxychains-pcloud.sh
+sudo chmod +x /usr/local/bin/proxychains-pcloud.sh
 ```
 ```
 sudo bash -c 'cat <<EOF > /etc/systemd/user/proxychains.pcloud.service
