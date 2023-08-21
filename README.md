@@ -41,7 +41,7 @@ sudo make install-config (installs proxychains.conf)
 sudo touch /etc/systemd/user/proxychains.dns.service
 ```
 ```
-sudo bash -c 'cat <<EOF > /etc/systemd/system/user/proxychains.dns.service
+sudo bash -c 'cat <<EOF > /etc/systemd/user/proxychains.dns.service
 [Unit]
 Description=ProxyChains DNS Daemon
 
@@ -87,7 +87,7 @@ EOF'
 sudo chmod +x /usr/bin/proxychains-pcloud.sh
 ```
 ```
-sudo bash -c 'cat <<EOF > /etc/systemd/system/user/proxychains.pcloud.service
+sudo bash -c 'cat <<EOF > /etc/systemd/user/proxychains.pcloud.service
 [Unit]
 Description=ProxyChains running pCloud
 
